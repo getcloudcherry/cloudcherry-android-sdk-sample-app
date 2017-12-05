@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements AnalyticsCallBack
             add(R.drawable.star5_selector);
         }};
         if (mScStaticToken.isChecked())
-            SurveyCC.initialise(this, "retail", "Cloudcherry@123", MyData.getInstance(this).getToken());
+            SurveyCC.initialise(this, "", "", MyData.getInstance(this).getToken());
         else
             SurveyCC.initialise(this, "retail", "Cloudcherry@123", aTokenConfig);
         SurveyCC.getInstance().setCustomTextStyle(CustomTextStyle.STYLE_RECTANGLE);
@@ -121,7 +121,11 @@ public class MainActivity extends AppCompatActivity implements AnalyticsCallBack
         aThrottleUniqueId.put("email", "madhur.tewani@wowlabz.com");
         aThrottleUniqueId.put("mobile", "9876543210");
         SurveyCC.getInstance().setThrottleUniqueId(aThrottleUniqueId);
-        SurveyCC.getInstance().trigger(this, true);
+        try {
+            SurveyCC.getInstance().trigger(this, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
